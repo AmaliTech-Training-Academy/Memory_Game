@@ -32,7 +32,7 @@ window.addEvenlistener('DOMContentLoaded', () => {
 
     startGame = () => {
         const element = [].map(id => getElementById(id)); //gets the id of elements listed in the array
-        const transform = [].map(seletor => document.querySelector(selector)); //gets the class of elements listed in the array
+        const transform = [].map(selector => document.querySelector(selector)); //gets the class of elements listed in the array
 
 
         for (let i = 1; i <= 3; i++) {
