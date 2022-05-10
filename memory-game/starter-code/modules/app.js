@@ -1,11 +1,9 @@
-'use strict'
-
 /*when the browser gets loaded, we need to set some default values to 
 run  when the initial HTML document has been completely loaded*/
 
-window.addEvenlistener('DOMContentLoaded', () => {
+window.addEventListener('DOMContentLoaded', () => {
     //This object will contain the game settings
-    const user_menu_option = {
+    const userMenuOption = {
         theme: null,
         players: null,
         grid: null
@@ -24,45 +22,47 @@ window.addEvenlistener('DOMContentLoaded', () => {
 
 
 
+    const homePage = document.querySelector(".home");
+    const btnStart = document.querySelector("#btn-start");
+    const body = document.querySelector("body");
 
 
+    btnStart.addEventListener("click", () => {
 
-    const btns = [''].map(id => getElementById(id)); //get the id of start button 
-
-
-    startGame = () => {
-        const element = [].map(id => getElementById(id)); //gets the id of elements listed in the array
-        const transform = [].map(selector => document.querySelector(selector)); //gets the class of elements listed in the array
-
+        const element = ["user-game-template"].map(id => document.getElementById);
 
         for (let i = 1; i <= 3; i++) {
-            // iterate through loop to get users input based on users choice
-
+            const choice = [...document.getElementById(`select-num${i}`).querySelectorAll('input')];
             if (i === 1) {
-
-
-                //set users theme template
+                userMenuOption.theme = choice.find(({ checked }) => checked).value;
 
             } else if (i === 2) {
+                userMenuOption.players = +choice.find(({ checked }) => checked).value;
 
-                //set number of players
             } else {
+                userMenuOption.grid = +choice.find(({ checked }) => checked).value.slice(0, 1);
 
-                //set Grid users grid
             }
-
-
-
         }
 
 
 
+        homePage.classList.add("hidden");
+        gamePlayContainer.classList.remove("hidden");
+        body.style.backgroundColor = "white";
+    });
 
 
-    }
 
-    btns[0].addEventListener('clicks', startGame) //click to start game
 
+    const gamePlayContainer = document.querySelector(".game-play");
+    const startNewGame = document.querySelector(".btn-new-game");
+
+    startNewGame.addEventListener("click", function() {
+        gamePlayContainer.classList.add("hidden");
+        homePage.classList.remove("hidden");
+        body.style.backgroundColor = "#152938";
+    });
 
 
 
