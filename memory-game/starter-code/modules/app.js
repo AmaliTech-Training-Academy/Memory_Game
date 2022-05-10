@@ -1,4 +1,6 @@
-import { GameTheme } from './services'
+'use strict'
+import { GameTheme } from './js/user_input.js';
+
 
 /*when the browser gets loaded, we need to set some default values to 
 run  when the initial HTML document has been completely loaded*/
@@ -15,7 +17,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     let players = {
-
+        activePlayer: 1,
     }
 
     const timer = () => {
@@ -33,7 +35,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     btnStart.addEventListener("click", () => {
 
-        const element = ["user-game-template"].map(id => document.getElementById);
+        const element = ["user-game-template"].map(id => document.getElementById(id));
+
+        const transform = ['.middle-grid-container'].map(selector => document.querySelector(selector))
         const gameTemplate = element[0].cloneNode(true).content;
         for (let i = 1; i <= 3; i++) {
             const game = new GameTheme();
@@ -55,6 +59,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
         homePage.classList.add("hidden");
         gamePlayContainer.classList.remove("hidden");
+        transform[0].append(gameTemplate)
         body.style.backgroundColor = "white";
     });
 
