@@ -1,6 +1,6 @@
 'use strict'
 
-class Game {
+export class GameTheme {
 
     constructor(theme = null, userTemplate = null, num = null, gameResultInfo = null, players = null) {
         this.theme = theme;

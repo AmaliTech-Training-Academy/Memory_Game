@@ -8,7 +8,7 @@
       src="https://kit.fontawesome.com/972c594dde.js"
       crossorigin="anonymous"
     ></script>
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="css/style.css" />
     <title>Memory Game</title>
   </head>
   <body>
@@ -16,33 +16,51 @@
       <div class="home">
         <h1 class="heading-main">Memory</h1>
         <div class="section section-theme">
-          <span class="text-select select-theme">Select Theme</span>
-          <div class="layout themes-box">
-            <input
-              type="radio"
-              name="theme"
-              value="number"
-              id="number"
-              checked
-            />
-            <input type="radio" name="theme" value="icon" id="icon" />
+          <div class="select-num1">
+            <span class="text-select select-theme">Select Theme</span>
+            <div class="layout themes-box">
+              <input
+                type="radio"
+                name="theme"
+                value="number"
+                id="number"
+                checked
+              />
+              <input type="radio" name="theme" value="icon" id="icon" />
+            </div>
           </div>
 
-          <span class="text-select select-players">Number of Players</span>
-          <div class="layout players-box">
-            <input type="radio" name="players" value="1" id="player1" checked />
-            <input type="radio" name="players" value="2" id="player2" />
-            <input type="radio" name="players" value="3" id="player3" />
-            <input type="radio" name="players" value="4" id="player4" />
+          <div class="select-num2">
+            <span class="text-select select-players">Number of Players</span>
+            <div class="layout players-box">
+              <input
+                type="radio"
+                name="players"
+                value="1"
+                id="player1"
+                checked
+              />
+              <input type="radio" name="players" value="2" id="player2" />
+              <input type="radio" name="players" value="3" id="player3" />
+              <input type="radio" name="players" value="4" id="player4" />
+            </div>
           </div>
 
-          <span class="text-select select-grid-size">Select Grid Size</span>
-          <div class="layout grid-box">
-            <input type="radio" name="grid" value="4*4" id="grid4x4" checked />
-            <input type="radio" name="grid" value="6*6" id="grid6x6" />
-          </div>
+          <div class="select-num3">
+            <span class="text-select select-grid-size">Select Grid Size</span>
+            <div class="layout grid-box">
+              <input
+                type="radio"
+                name="grid"
+                value="4*4"
+                id="grid4x4"
+                checked
+              />
+              <input type="radio" name="grid" value="6*6" id="grid6x6" />
+            </div>
 
-          <button id="btn-start" class="btn btn-start">Start Game</button>
+            <button id="btn-start" class="btn btn-start">Start Game</button>
+          </div>
         </div>
       </div>
 
@@ -57,168 +75,170 @@
           </div>
 
           <div class="middle-grid-container">
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-mug-saucer"
-                data-icon="mug"
-              ></i>
-              <span data-number="1" class="game-move__grid--content hidden"
-                >1</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-bookmark"
-                data-icon="bookmark"
-              ></i>
-              <span data-number="2" class="game-move__grid--content hidden"
-                >2</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-bahai"
-                data-icon="fa-bahai"
-              ></i>
-              <span data-number="3" class="game-move__grid--content hidden"
-                >3</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-bell"
-                data-icon="bell"
-              ></i>
-              <span data-number="4" class="game-move__grid--content hidden"
-                >4</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-atom"
-                data-icon="atom"
-              ></i>
-              <span data-number="5" class="game-move__grid--content hidden"
-                >5</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-brain"
-                data-icon="brain"
-              ></i>
-              <span data-number="6" class="game-move__grid--content hidden"
-                >6</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-bug"
-                data-icon="bug"
-              ></i>
-              <span data-number="7" class="game-move__grid--content hidden"
-                >7</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-bicycle"
-                data-icon="bicycle"
-              ></i>
-              <span data-number="8" class="game-move__grid--content hidden"
-                >8</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-fan"
-                data-icon="fan"
-              ></i>
-              <span data-number="9" class="game-move__grid--content hidden"
-                >9</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-feather"
-                data-icon="feather"
-              ></i>
-              <span data-number="10" class="game-move__grid--content hidden"
-                >10</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-key"
-                data-icon="key"
-              ></i>
-              <span data-number="11" class="game-move__grid--content hidden"
-                >11</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-socks"
-                data-icon="socks"
-              ></i>
-              <span data-number="12" class="game-move__grid--content hidden"
-                >12</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-truck-field"
-                data-icon="truck"
-              ></i>
-              <span data-number="13" class="game-move__grid--content hidden"
-                >13</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-chess-knight"
-                data-icon="chess"
-              ></i>
-              <span data-number="14" class="game-move__grid--content hidden"
-                >14</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-chess-king"
-                data-icon="chess"
-              ></i>
-              <span data-number="15" class="game-move__grid--content hidden"
-                >15</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-award"
-                data-icon="award"
-              ></i>
-              <span data-number="16" class="game-move__grid--content hidden"
-                >16</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-bag-shopping"
-                data-icon="bag"
-              ></i>
-              <span data-number="17" class="game-move__grid--content hidden"
-                >17</span
-              >
-            </div>
-            <div class="game-move__grid" data-value="">
-              <i
-                class="game-move__grid--content hidden fa-solid fa-apple"
-                data-icon="apple"
-              ></i>
-              <span data-number="18" class="game-move__grid--content hidden"
-                >18</span
-              >
-            </div>
+            <template id="user-game-template">
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-mug-saucer"
+                  data-icon="mug"
+                ></i>
+                <span data-number="1" class="game-move__grid--content hidden"
+                  >1</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-bookmark"
+                  data-icon="bookmark"
+                ></i>
+                <span data-number="2" class="game-move__grid--content hidden"
+                  >2</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-bahai"
+                  data-icon="fa-bahai"
+                ></i>
+                <span data-number="3" class="game-move__grid--content hidden"
+                  >3</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-bell"
+                  data-icon="bell"
+                ></i>
+                <span data-number="4" class="game-move__grid--content hidden"
+                  >4</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-atom"
+                  data-icon="atom"
+                ></i>
+                <span data-number="5" class="game-move__grid--content hidden"
+                  >5</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-brain"
+                  data-icon="brain"
+                ></i>
+                <span data-number="6" class="game-move__grid--content hidden"
+                  >6</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-bug"
+                  data-icon="bug"
+                ></i>
+                <span data-number="7" class="game-move__grid--content hidden"
+                  >7</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-bicycle"
+                  data-icon="bicycle"
+                ></i>
+                <span data-number="8" class="game-move__grid--content hidden"
+                  >8</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-fan"
+                  data-icon="fan"
+                ></i>
+                <span data-number="9" class="game-move__grid--content hidden"
+                  >9</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-feather"
+                  data-icon="feather"
+                ></i>
+                <span data-number="10" class="game-move__grid--content hidden"
+                  >10</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-key"
+                  data-icon="key"
+                ></i>
+                <span data-number="11" class="game-move__grid--content hidden"
+                  >11</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-socks"
+                  data-icon="socks"
+                ></i>
+                <span data-number="12" class="game-move__grid--content hidden"
+                  >12</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-truck-field"
+                  data-icon="truck"
+                ></i>
+                <span data-number="13" class="game-move__grid--content hidden"
+                  >13</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-chess-knight"
+                  data-icon="chess"
+                ></i>
+                <span data-number="14" class="game-move__grid--content hidden"
+                  >14</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-chess-king"
+                  data-icon="chess"
+                ></i>
+                <span data-number="15" class="game-move__grid--content hidden"
+                  >15</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-award"
+                  data-icon="award"
+                ></i>
+                <span data-number="16" class="game-move__grid--content hidden"
+                  >16</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-bag-shopping"
+                  data-icon="bag"
+                ></i>
+                <span data-number="17" class="game-move__grid--content hidden"
+                  >17</span
+                >
+              </div>
+              <div class="game-move__grid" data-value="">
+                <i
+                  class="game-move__grid--content hidden fa-solid fa-apple"
+                  data-icon="apple"
+                ></i>
+                <span data-number="18" class="game-move__grid--content hidden"
+                  >18</span
+                >
+              </div>
+            </template>
           </div>
 
           <div class="players-state-container">
@@ -243,6 +263,6 @@
       </div>
     </div>
 
-    <script src="script.js"></script>
+    <script src="./modules/app.js" type="module"></script>
   </body>
 </html>
