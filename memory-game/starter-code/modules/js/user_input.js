@@ -1,5 +1,3 @@
-'use strict'
-
 export class GameTheme {
 
     constructor(theme = null, userTemplate = null, num = null, gameResultInfo = null, players = null) {
@@ -13,7 +11,19 @@ export class GameTheme {
 
     setGrid(num, userTemplate) {
         // method sets the grid based on the input either 4 or 6
-
+        this.num = num;
+        this.userTemplate = userTemplate;
+        if (this.num === 4) {
+            for (let i = 17; i > 7; i--) this.gameTemplate.removeChild(this.gameTemplate.children[i]);
+        }
+        [...this.userTemplate.children].forEach($element => this.userTemplate.append($element.cloneNode(true)));
+        document.querySelector('.middle-grid-container').classList.add(`middle-grid-container--${this.num}-columns`);
+        const elements = [...this.userTemplate.children];
+        for (let i = elements.length - 1; i > 0; i--) {
+            const randNumber = Math.floor(Math.random() * (i + 1));
+            [elements[i], elements[randNumber]] = [elements[randNumber], elements[i]];
+        }
+        this.userTemplate.replaceChildren(...elements);
 
 
     }

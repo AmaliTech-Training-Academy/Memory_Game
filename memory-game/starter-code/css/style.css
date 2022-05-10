@@ -300,3 +300,7 @@ html body .hide {
 html body .show {
     display: block;
 }
+
+.middle-grid-container--4-columns {
+    grid-template-columns: repeat(4, 1fr);
+}
