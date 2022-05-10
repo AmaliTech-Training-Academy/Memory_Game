@@ -1,5 +1,9 @@
+import { GameTheme } from './services'
+
 /*when the browser gets loaded, we need to set some default values to 
 run  when the initial HTML document has been completely loaded*/
+
+
 
 window.addEventListener('DOMContentLoaded', () => {
     //This object will contain the game settings
@@ -30,17 +34,19 @@ window.addEventListener('DOMContentLoaded', () => {
     btnStart.addEventListener("click", () => {
 
         const element = ["user-game-template"].map(id => document.getElementById);
-
+        const gameTemplate = element[0].cloneNode(true).content;
         for (let i = 1; i <= 3; i++) {
-            const choice = [...document.getElementById(`select-num${i}`).querySelectorAll('input')];
+            const game = new GameTheme();
+            const inputs = [...document.getElementById(`select-num${i}`).querySelectorAll('input')];
             if (i === 1) {
-                userMenuOption.theme = choice.find(({ checked }) => checked).value;
+                userMenuOption.theme = inputs.find(({ checked }) => checked).value;
+                game.setTheme(userMenuOption.theme, gameTemplate)
 
             } else if (i === 2) {
-                userMenuOption.players = +choice.find(({ checked }) => checked).value;
+                userMenuOption.players = +inputs.find(({ checked }) => checked).value;
 
             } else {
-                userMenuOption.grid = +choice.find(({ checked }) => checked).value.slice(0, 1);
+                userMenuOption.grid = +inputs.find(({ checked }) => checked).value.slice(0, 1);
 
             }
         }
