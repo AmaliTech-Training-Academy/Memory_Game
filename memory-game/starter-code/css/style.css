@@ -237,6 +237,9 @@ input[type="radio"]::before {
     gap: 20px;
 }
 
+
+/*-------4 by 4 grid style-------*/
+
 .middle-grid-container--4-columns {
     grid-template-columns: repeat(4, 1fr);
 }
@@ -244,6 +247,18 @@ input[type="radio"]::before {
 .middle-grid-container--4-columns .game-move__grid {
     height: 85px;
     width: 85px;
+}
+
+
+/*-------6 by 6 grid style-------*/
+
+.middle-grid-container--6-columns {
+    grid-template-columns: repeat(6, 1fr);
+}
+
+.middle-grid-container--6-columns .game-move__grid {
+    width: 60px;
+    height: 60px;
 }
 
 .player-btn {
