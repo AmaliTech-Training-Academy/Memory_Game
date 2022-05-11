@@ -52,10 +52,10 @@ window.addEventListener('DOMContentLoaded', () => {
             } else {
                 userMenuOption.grid = +inputs.find(({ checked }) => checked).value.slice(0, 1);
 
+                game.setGrid(userMenuOption.grid, gameTemplate)
+
             }
         }
-
-
 
         homePage.classList.add("hidden");
         gamePlayContainer.classList.remove("hidden");

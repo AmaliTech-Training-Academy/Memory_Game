@@ -199,49 +199,51 @@ input[type="radio"]::before {
 }
 
 .btn-restart {
-    width: 150px;
-    height: 40px;
-    font-size: 20px;
-    font-weight: 700;
-    background-color: var(--color-gold);
     color: var(--color-white);
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    height: max-content;
+    padding: 8px 25px;
     cursor: pointer;
-    transition: all 0.25s ease;
+    background-color: var(--color-gold);
 }
 
 .btn-new-game {
-    width: 150px;
-    height: 40px;
-    font-size: 20px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
     font-weight: 700;
+    height: max-content;
+    padding: 8px 25px;
+    cursor: pointer;
     background-color: var(--color-ash);
     color: var(--color-dark);
     cursor: pointer;
     transition: all 0.25s ease;
 }
 
+
+/*************** game section middle container *************/
+
 .middle-grid-container {
-    width: 50%;
     display: grid;
-    grid-template-columns: repeat(6, 1fr);
-    grid-gap: 30px;
+    gap: 15px;
+    max-width: 600px;
+    height: max-content;
+    margin-inline: auto;
+    justify-items: center;
+    gap: 20px;
 }
 
-.game-move__grid {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: var(--color-dark);
-    color: var(--color-white);
-    cursor: pointer;
+.middle-grid-container--4-columns {
+    grid-template-columns: repeat(4, 1fr);
 }
 
-.game-move__grid--content {
-    position: absolute;
-    font-size: 30px;
+.middle-grid-container--4-columns .game-move__grid {
+    height: 85px;
+    width: 85px;
 }
 
 .player-btn {
@@ -274,8 +276,27 @@ input[type="radio"]::before {
     transition: all 0.25s ease;
 }
 
-.player-btn.active.player-btn::before {
-    border-bottom: 15px solid var(--color-gold);
+.game-move__grid {
+    position: relative;
+    display: flex;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+    cursor: pointer;
+}
+
+.game-move__grid::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--color-light-dark);
+    clip-path: circle(100% at 50% 50%);
+    transition: 0.2s linear clip-path, background-color 0.25s linear;
 }
 
 .player {
@@ -299,8 +320,4 @@ html body .hide {
 
 html body .show {
     display: block;
-}
-
-.middle-grid-container--4-columns {
-    grid-template-columns: repeat(4, 1fr);
 }
