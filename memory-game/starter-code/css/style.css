@@ -14,6 +14,7 @@
     --color-light-blue: #7191a5;
     --color-blue: #6395b8;
     --color-white: #fcfcfc;
+    --clrPattensBlue: #dfe7ec
 }
 
 body {
@@ -335,4 +336,76 @@ html body .hide {
 
 html body .show {
     display: block;
+}
+
+.sect--game__info {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 20px;
+    width: min(100%, 230px);
+    border-radius: 10px;
+    background-color: var(--clrPattensBlue);
+}
+
+
+/*-----------------Player result------------------*/
+
+.players-state-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+@media screen and (min-width: 548px) {
+    .players-state-container {
+        gap: 20px;
+        flex-flow: row;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .players-state-container {
+        margin-bottom: 40px;
+    }
+}
+
+.sect--game__info::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: calc(50% - 15px);
+    transform: rotate(46deg);
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-gold);
+    display: none;
+}
+
+.sect--game__info--active {
+    background-color: var(--color-gold);
+}
+
+.sect--game__info--active::before {
+    display: block;
+}
+
+.sect--game__info--active .sect--game__info--name {
+    color: var(--color-light);
+}
+
+.sect--game__info--active .sect--game__info--value {
+    color: var(--color-light);
+}
+
+.sect--game__info--name {
+    color: var(--color-light-blue);
+}
+
+.sect--game__info--value {
+    font-weight: 700;
+    color: var(--color-light-dark);
 }

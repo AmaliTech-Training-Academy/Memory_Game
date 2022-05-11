@@ -35,9 +35,9 @@ window.addEventListener('DOMContentLoaded', () => {
 
     btnStart.addEventListener("click", () => {
 
-        const element = ["user-game-template"].map(id => document.getElementById(id));
-
-        const transform = ['.middle-grid-container'].map(selector => document.querySelector(selector))
+        const element = ["user-game-template", "game-mode-template"].map(id => document.getElementById(id));
+        const gameMode = element[1].cloneNode(true).content
+        const transform = ['.middle-grid-container', '.players-state-container'].map(selector => document.querySelector(selector))
         const gameTemplate = element[0].cloneNode(true).content;
         for (let i = 1; i <= 3; i++) {
             const game = new GameTheme();
@@ -48,6 +48,8 @@ window.addEventListener('DOMContentLoaded', () => {
 
             } else if (i === 2) {
                 userMenuOption.players = +inputs.find(({ checked }) => checked).value;
+                game.setNumberOfPlayers(userMenuOption.players, gameMode, players)
+
 
             } else {
                 userMenuOption.grid = +inputs.find(({ checked }) => checked).value.slice(0, 1);
@@ -60,6 +62,7 @@ window.addEventListener('DOMContentLoaded', () => {
         homePage.classList.add("hidden");
         gamePlayContainer.classList.remove("hidden");
         transform[0].append(gameTemplate)
+        transform[1].append(gameMode)
         body.style.backgroundColor = "white";
     });
 
