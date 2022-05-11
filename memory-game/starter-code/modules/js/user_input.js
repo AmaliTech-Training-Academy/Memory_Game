@@ -14,7 +14,7 @@ export class GameTheme {
         this.num = num;
         this.userTemplate = userTemplate;
         if (this.num === 4) {
-            for (let i = 17; i > 7; i--) this.gameTemplate.removeChild(this.gameTemplate.children[i]);
+            for (let i = 17; i > 7; i--) this.userTemplate.removeChild(this.userTemplate.children[i]);
         }
         [...this.userTemplate.children].forEach($element => this.userTemplate.append($element.cloneNode(true)));
         document.querySelector('.middle-grid-container').classList.add(`middle-grid-container--${this.num}-columns`);
