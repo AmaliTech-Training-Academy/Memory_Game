@@ -46,8 +46,32 @@ export class GameTheme {
 
 
     setNumberOfPlayers(num, gameResultInfo, players) {
+        this.num = num;
+        this.gameResultInfo = gameResultInfo;
+        this.players = players
+        const info = gameResultInfo.querySelector('.sect--game__info');
+        this.players['player1'] = {
+                id: 1,
+                pairs: 0,
+                moves: 0,
+            }
+            //if the number or player is one i.e solo player mode
+        console.log(this.num);
+        if (this.num === 1) {
+            info.querySelector('span:first-child').textContent = 'Time';
+            info.querySelector('span:last-child').textContent = '00: 00';
+            info.querySelector('span:last-child').id = 'time-span';
 
-        //creates number of players
+            const newInfo = info.cloneNode(true);
+            newInfo.querySelector('span:first-child').textContent = 'Moves';
+            newInfo.querySelector('span:last-child').textContent = '0';
+            newInfo.querySelector('span:last-child').id = 'player1-moves';
+            this.gameResultInfo.append(newInfo);
+            console.log(gameResultInfo);
+
+        }
+
+
 
     }
 
