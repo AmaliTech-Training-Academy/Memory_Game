@@ -69,6 +69,24 @@ export class GameTheme {
             this.gameResultInfo.append(newInfo);
             console.log(gameResultInfo);
 
+        } else {
+            for (let i = 2; i <= this.num; i++) {
+
+                info.querySelector('span:first-child').textContent = 'Player 1';
+                info.querySelector('span:last-child').textContent = '0';
+                info.querySelector('span:last-child').id = 'player1-moves';
+
+                const newInfo = info.cloneNode(true);
+                newInfo.querySelector('span:first-child').textContent = `Player ${i}`;
+                newInfo.querySelector('span:last-child').id = `player${i}-moves`;
+                this.gameResultInfo.append(newInfo);
+                this.players[`player${i}`] = {
+                    id: i,
+                    pairs: 0,
+                    moves: 0,
+                };
+
+            }
         }
 
 
