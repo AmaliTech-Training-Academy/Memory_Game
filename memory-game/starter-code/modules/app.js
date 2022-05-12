@@ -25,16 +25,33 @@ window.addEventListener('DOMContentLoaded', () => {
 
     }
 
+    const reset = (start = true) => {
 
+        document.querySelectorAll('.game-move__grid').forEach($element => $element.remove()); //removes all the rounded nodes
+        document.querySelectorAll('.sect--game__info').forEach($element => $element.remove()); //removes the "time and moves" panel at the bottom
+
+        if (start) startGame();
+
+    }
 
 
     const homePage = document.querySelector(".home");
     const btnStart = document.querySelector("#btn-start");
     const body = document.querySelector("body");
 
+    //This function allows the user t0 reset game
+    const newGame = () => {
+        //const element_selector = [''].map(selector => document.querySelector(selector))
+        reset(false)
+        gamePlayContainer.classList.add("hidden");
+        homePage.classList.remove("hidden");
+        body.style.backgroundColor = "#152938";
 
-    btnStart.addEventListener("click", () => {
 
+    }
+
+
+    const startGame = () => {
         const element = ["user-game-template", "game-mode-template"].map(id => document.getElementById(id));
         const gameMode = element[1].cloneNode(true).content
         const transform = ['.middle-grid-container', '.players-state-container'].map(selector => document.querySelector(selector))
@@ -64,7 +81,11 @@ window.addEventListener('DOMContentLoaded', () => {
         transform[0].append(gameTemplate)
         transform[1].append(gameMode)
         body.style.backgroundColor = "white";
-    });
+    };
+
+
+
+    btnStart.addEventListener("click", startGame);
 
 
 
@@ -72,11 +93,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const gamePlayContainer = document.querySelector(".game-play");
     const startNewGame = document.querySelector(".btn-new-game");
 
-    startNewGame.addEventListener("click", function() {
-        gamePlayContainer.classList.add("hidden");
-        homePage.classList.remove("hidden");
-        body.style.backgroundColor = "#152938";
-    });
+    startNewGame.addEventListener("click", newGame)
 
 
 
