@@ -8,22 +8,34 @@ run  when the initial HTML document has been completely loaded*/
 
 
 window.addEventListener('DOMContentLoaded', () => {
-    //This object will contain the game settings
-    const userMenuOption = {
-        theme: null,
-        players: null,
-        grid: null
-    }
+            //This object will contain the game settings
+            const userMenuOption = {
+                theme: null,
+                players: null,
+                grid: null
+            }
 
 
-    let players = {
-        activePlayer: 1,
-    }
+            let players = {
+                activePlayer: 1,
+            }
 
-    const timer = () => {
+            let referenceInterval = null;
+            let minutes = 0;
+            let seconds = 0;
 
-
-    }
+            // This function sets the time for game, it only works when the player is set to one
+            const timer = () => {
+                    const $periodOfTime = document.getElementById('time-span');
+                    referenceInterval = setInterval(() => {
+                                seconds += 1;
+                                if (seconds > 60) {
+                                    minutes += 1;
+                                    seconds = 0;
+                                }
+                                $periodOfTime.textContent = `${`0${minutes}`.slice(-2)}:${`0${seconds}`.slice(-2)}`;
+        }, 1000);
+    };
 
     const reset = (start = true) => {
 
@@ -81,6 +93,8 @@ window.addEventListener('DOMContentLoaded', () => {
         transform[0].append(gameTemplate)
         transform[1].append(gameMode)
         body.style.backgroundColor = "white";
+
+        if (userMenuOption.players === 1) timer();
     };
 
 
