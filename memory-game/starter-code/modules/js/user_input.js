@@ -56,7 +56,7 @@ export class GameTheme {
                 moves: 0,
             }
             //if the number or player is one i.e solo player mode
-        console.log(this.num);
+
         if (this.num === 1) {
             info.querySelector('span:first-child').textContent = 'Time';
             info.querySelector('span:last-child').textContent = '00: 00';
@@ -67,7 +67,7 @@ export class GameTheme {
             newInfo.querySelector('span:last-child').textContent = '0';
             newInfo.querySelector('span:last-child').id = 'player1-moves';
             this.gameResultInfo.append(newInfo);
-            console.log(gameResultInfo);
+
 
         } else {
             for (let i = 2; i <= this.num; i++) {

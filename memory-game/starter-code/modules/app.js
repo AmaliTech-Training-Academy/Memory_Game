@@ -1,6 +1,6 @@
 'use strict'
 import { GameTheme } from './js/user_input.js';
-
+import { GameMechanics } from './js/game_mechanics.js'
 
 /*when the browser gets loaded, we need to set some default values to 
 run  when the initial HTML document has been completely loaded*/
@@ -111,6 +111,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-
+    document.querySelector('.middle-grid-container').addEventListener('click', e => new GameMechanics().gameLogic(e, players));
 
 });
