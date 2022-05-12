@@ -258,8 +258,8 @@ input[type="radio"]::before {
 }
 
 .middle-grid-container--6-columns .game-move__grid {
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
 }
 
 .player-btn {
