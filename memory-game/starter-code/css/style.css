@@ -35,8 +35,12 @@ body {
     place-items: center;
 }
 
-.hidden {
+html body .hidden {
     display: none;
+}
+
+html body .show {
+    display: block;
 }
 
 .heading-main {
@@ -319,7 +323,6 @@ input[type="radio"]:hover {
 .game-move__grid::before {
     content: "";
     position: absolute;
-    top: 0;
     left: 0;
     width: 100%;
     height: 100%;
@@ -327,6 +330,23 @@ input[type="radio"]:hover {
     background-color: var(--color-light-dark);
     clip-path: circle(100% at 50% 50%);
     transition: 0.2s linear clip-path, background-color 0.25s linear;
+}
+
+.sect--game__cont-game-btn--selected::before {
+    clip-path: circle(0% at 50% 50%);
+}
+
+.sect--game__cont-game-btn--done {
+    background-color: var(--color-ash);
+    pointer-events: none;
+}
+
+.game-move__grid--content {
+    margin: auto;
+    font-weight: 700;
+    color: var(--color-light);
+    font-size: 30px;
+    pointer-events: none;
 }
 
 @media screen and (hover: hover) {
@@ -433,11 +453,11 @@ html body .show {
 
 /*------------Logic Manipulation style------------*/
 
-.sect--game__cont-game-btn--resolved {
-    background-color: var(--clrSpindle);
+.sect--game__cont-game-btn--done {
+    background-color: var(--color-ash);
     pointer-events: none;
 }
 
-.sect--game__cont-game-btn--resolved::before {
+.sect--game__cont-game-btn--done::before {
     clip-path: circle(0% at 50% 50%);
 }
