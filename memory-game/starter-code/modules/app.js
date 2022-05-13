@@ -111,6 +111,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-    document.querySelector('.middle-grid-container').addEventListener('click', e => new GameMechanics().gameLogic(e, players));
+    document.querySelector('.middle-grid-container').addEventListener('click', e => new GameMechanics().gameLogic(e, players, userMenuOption));
 
 });
