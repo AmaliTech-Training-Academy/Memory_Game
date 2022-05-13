@@ -47,7 +47,7 @@ body {
     width: 47.5vw;
     display: grid;
     place-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 70px;
 }
 
 h1 {
@@ -327,6 +327,12 @@ input[type="radio"]:hover {
     background-color: var(--color-light-dark);
     clip-path: circle(100% at 50% 50%);
     transition: 0.2s linear clip-path, background-color 0.25s linear;
+}
+
+@media screen and (hover: hover) {
+    .game-move__grid:hover::before {
+        background-color: var(--color-blue);
+    }
 }
 
 .player {
