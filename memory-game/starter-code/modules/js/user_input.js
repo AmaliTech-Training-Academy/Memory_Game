@@ -37,7 +37,7 @@ export class GameTheme {
         [...this.userTemplate.children].forEach($element => {
             const $child = $element.querySelector(`[data-${this.theme}]`);
             $element.dataset.value = $child.dataset.icon || $child.dataset.number; //short circuit...if theme value is data-icon show icons else hide and show numbber
-            $child.classList.replace('hide', 'show');
+            $child.classList.replace('hidden', 'show');
         });
 
 
