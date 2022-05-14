@@ -370,6 +370,51 @@ input[type="radio"]:hover {
     color: var(--color-white);
 }
 
+<<<<<<< HEAD
+/*--------------My Responsiveness-----------------*/
+
+/*----Mobile Reponsiveness----*/
+@media only screen and (min-width:  320px) and (max-width: 600px)
+{
+    
+   .section {
+        width: 80vw;
+        padding: 15px;
+        margin: 0 auto 20px;
+    } 
+
+    .heading-main {
+        font-size: 40px;
+        width: 30vw;
+        margin: 80px auto 45px;
+    }
+
+    .text-select {
+        font-size: 10px;
+        margin-bottom: 15px;
+        margin-top: 0px;
+        height: 1vh;
+    }
+
+    input[type="radio"] {  
+        width:50%;
+        height: 35px;    
+        border-radius: 50px;
+        text-align: center;
+    }   
+
+    input[type="radio"]::before {
+        content: " ";
+        font-size: 15px;
+    }
+
+    .btn-start {
+        margin-top: 0px;
+        width: 100%;
+        height: 40px;
+        font-size: 20px;        
+    }
+=======
 html body .hide {
     display: none;
 }
@@ -460,4 +505,5 @@ html body .show {
 
 .sect--game__cont-game-btn--done::before {
     clip-path: circle(0% at 50% 50%);
+>>>>>>> 73214eda02f92d8eb4d3ba2b8b907e7f19e3a7a2
 }
