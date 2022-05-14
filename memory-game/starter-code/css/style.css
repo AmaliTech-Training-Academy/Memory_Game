@@ -14,6 +14,7 @@
     --color-light-blue: #7191a5;
     --color-blue: #6395b8;
     --color-white: #fcfcfc;
+    --clrPattensBlue: #dfe7ec
 }
 
 body {
@@ -34,8 +35,12 @@ body {
     place-items: center;
 }
 
-.hidden {
+html body .hidden {
     display: none;
+}
+
+html body .show {
+    display: block;
 }
 
 .heading-main {
@@ -46,7 +51,7 @@ body {
     width: 47.5vw;
     display: grid;
     place-content: center;
-    margin-bottom: 20px;
+    margin-bottom: 70px;
 }
 
 h1 {
@@ -57,10 +62,11 @@ h1 {
 }
 
 .section {
-    width: 40vw;
-    /* height: 60vh; */
+    width: 30vw;
     background-color: var(--color-white);
     padding: 50px;
+    margin: auto;
+    border-radius: 15px;
 }
 
 .text-select {
@@ -158,15 +164,28 @@ input[type="radio"]::before {
     transition: all 0.25s ease;
 }
 
+input[type="radio"]:hover {
+    background-color: var(--color-blue);
+}
+
+.btn-restart:hover {
+    opacity: 0.8;
+}
+
 .btn-start {
     width: 100%;
-    height: 50px;
+    height: 60px;
     font-size: 32px;
     font-weight: 700;
     color: var(--color-white);
     background-color: #fda214;
     cursor: pointer;
     transition: all 0.25s ease;
+}
+
+.btn-new-game:hover {
+    background-color: var(--color-blue);
+    color: var(--color-white);
 }
 
 .game-play {
@@ -199,49 +218,66 @@ input[type="radio"]::before {
 }
 
 .btn-restart {
-    width: 150px;
-    height: 40px;
-    font-size: 20px;
-    font-weight: 700;
-    background-color: var(--color-gold);
     color: var(--color-white);
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    font-weight: 700;
+    height: max-content;
+    padding: 8px 25px;
     cursor: pointer;
-    transition: all 0.25s ease;
+    background-color: var(--color-gold);
 }
 
 .btn-new-game {
-    width: 150px;
-    height: 40px;
-    font-size: 20px;
+    border-radius: 20px;
+    outline: none;
+    border: none;
     font-weight: 700;
+    height: max-content;
+    padding: 8px 25px;
+    cursor: pointer;
     background-color: var(--color-ash);
     color: var(--color-dark);
     cursor: pointer;
     transition: all 0.25s ease;
 }
 
+
+/*************** game section middle container *************/
+
 .middle-grid-container {
-    width: 50%;
     display: grid;
+    gap: 15px;
+    max-width: 600px;
+    height: max-content;
+    margin-inline: auto;
+    justify-items: center;
+    gap: 20px;
+}
+
+
+/*-------4 by 4 grid style-------*/
+
+.middle-grid-container--4-columns {
+    grid-template-columns: repeat(4, 1fr);
+}
+
+.middle-grid-container--4-columns .game-move__grid {
+    height: 85px;
+    width: 85px;
+}
+
+
+/*-------6 by 6 grid style-------*/
+
+.middle-grid-container--6-columns {
     grid-template-columns: repeat(6, 1fr);
-    grid-gap: 30px;
 }
 
-.game-move__grid {
-    position: relative;
-    display: grid;
-    place-items: center;
-    width: 80px;
-    height: 80px;
-    border-radius: 50%;
-    background-color: var(--color-dark);
-    color: var(--color-white);
-    cursor: pointer;
-}
-
-.game-move__grid--content {
-    position: absolute;
-    font-size: 30px;
+.middle-grid-container--6-columns .game-move__grid {
+    width: 70px;
+    height: 70px;
 }
 
 .player-btn {
@@ -274,8 +310,49 @@ input[type="radio"]::before {
     transition: all 0.25s ease;
 }
 
-.player-btn.active.player-btn::before {
-    border-bottom: 15px solid var(--color-gold);
+.game-move__grid {
+    position: relative;
+    display: flex;
+    width: 55px;
+    height: 55px;
+    border-radius: 50%;
+    background-color: var(--color-gold);
+    cursor: pointer;
+}
+
+.game-move__grid::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    background-color: var(--color-light-dark);
+    clip-path: circle(100% at 50% 50%);
+    transition: 0.2s linear clip-path, background-color 0.25s linear;
+}
+
+.sect--game__cont-game-btn--selected::before {
+    clip-path: circle(0% at 50% 50%);
+}
+
+.sect--game__cont-game-btn--done {
+    background-color: var(--color-ash);
+    pointer-events: none;
+}
+
+.game-move__grid--content {
+    margin: auto;
+    font-weight: 700;
+    color: var(--color-light);
+    font-size: 30px;
+    pointer-events: none;
+}
+
+@media screen and (hover: hover) {
+    .game-move__grid:hover::before {
+        background-color: var(--color-blue);
+    }
 }
 
 .player {
@@ -293,6 +370,7 @@ input[type="radio"]::before {
     color: var(--color-white);
 }
 
+<<<<<<< HEAD
 /*--------------My Responsiveness-----------------*/
 
 /*----Mobile Reponsiveness----*/
@@ -336,4 +414,96 @@ input[type="radio"]::before {
         height: 40px;
         font-size: 20px;        
     }
+=======
+html body .hide {
+    display: none;
+}
+
+html body .show {
+    display: block;
+}
+
+.sect--game__info {
+    position: relative;
+    display: flex;
+    justify-content: space-between;
+    padding: 18px 20px;
+    width: min(100%, 230px);
+    border-radius: 10px;
+    background-color: var(--clrPattensBlue);
+}
+
+
+/*-----------------Player result------------------*/
+
+.players-state-container {
+    display: flex;
+    flex-flow: column wrap;
+    justify-content: center;
+    align-content: center;
+    gap: 20px;
+    width: 100%;
+}
+
+@media screen and (min-width: 548px) {
+    .players-state-container {
+        gap: 20px;
+        flex-flow: row;
+    }
+}
+
+@media screen and (min-width: 768px) {
+    .players-state-container {
+        margin-bottom: 40px;
+    }
+}
+
+.sect--game__info::before {
+    content: "";
+    position: absolute;
+    top: -8px;
+    left: calc(50% - 15px);
+    transform: rotate(46deg);
+    width: 30px;
+    height: 30px;
+    background-color: var(--color-gold);
+    display: none;
+}
+
+.sect--game__info--active {
+    background-color: var(--color-gold);
+}
+
+.sect--game__info--active::before {
+    display: block;
+}
+
+.sect--game__info--active .sect--game__info--name {
+    color: var(--color-light);
+}
+
+.sect--game__info--active .sect--game__info--value {
+    color: var(--color-light);
+}
+
+.sect--game__info--name {
+    color: var(--color-light-blue);
+}
+
+.sect--game__info--value {
+    font-weight: 700;
+    color: var(--color-light-dark);
+}
+
+
+/*------------Logic Manipulation style------------*/
+
+.sect--game__cont-game-btn--done {
+    background-color: var(--color-ash);
+    pointer-events: none;
+}
+
+.sect--game__cont-game-btn--done::before {
+    clip-path: circle(0% at 50% 50%);
+>>>>>>> 73214eda02f92d8eb4d3ba2b8b907e7f19e3a7a2
 }
