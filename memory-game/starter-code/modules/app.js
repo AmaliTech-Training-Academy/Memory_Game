@@ -64,7 +64,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
     const startGame = () => {
-        const element = ["user-game-template", "game-mode-template"].map(id => document.getElementById(id));
+        const element = ["user-game-template", "game-mode-template", "player1-moves"].map(id => document.getElementById(id));
         const gameMode = element[1].cloneNode(true).content
         const transform = ['.middle-grid-container', '.players-state-container'].map(selector => document.querySelector(selector))
         const gameTemplate = element[0].cloneNode(true).content;
@@ -92,9 +92,11 @@ window.addEventListener('DOMContentLoaded', () => {
         gamePlayContainer.classList.remove("hidden");
         transform[0].append(gameTemplate)
         transform[1].append(gameMode)
-        body.style.backgroundColor = "white";
 
+        body.style.backgroundColor = "white";
         if (userMenuOption.players === 1) timer();
+        element[2].closest('div').classList.add('sect--game__info--active');
+
     };
 
 
@@ -111,6 +113,6 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-    document.querySelector('.middle-grid-container').addEventListener('click', e => new GameMechanics().gameLogic(e, players, userMenuOption));
+    document.querySelector('.middle-grid-container').addEventListener('click', e => new GameMechanics().gameLogic(e, players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame));
 
 });
