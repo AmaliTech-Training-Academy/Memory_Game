@@ -38,10 +38,22 @@ window.addEventListener('DOMContentLoaded', () => {
     };
 
     const reset = (start = true) => {
+        clearInterval(referenceInterval);
+        minutes = 0;
+        seconds = 0;
+        players.playerActive = 1;
+        delete players.player1;
+        delete players.player2;
+        delete players.player3;
 
-        document.querySelectorAll('.game-move__grid').forEach($element => $element.remove()); //removes all the rounded nodes
+        document.querySelectorAll('.game-move__grid').forEach($element => $element.remove()); //reset to inital start
         document.querySelectorAll('.sect--game__info').forEach($element => $element.remove()); //removes the "time and moves" panel at the bottom
-
+        document.querySelector('.modal').classList.remove('modal--show');
+        try {
+            document.querySelector('.modal__cont-bottom').remove();
+            document.querySelector('.modal__ul').remove();
+            document.querySelector('.modal__cont-top').remove();
+        } catch (error) { }
         if (start) startGame();
 
     }
@@ -59,7 +71,11 @@ window.addEventListener('DOMContentLoaded', () => {
         homePage.classList.remove("hidden");
         body.style.backgroundColor = "#152938";
 
-
+        try {
+            document.querySelector('.modal__cont-top').remove();
+            document.querySelector('.modal__ul').remove();
+            document.querySelector('.modal__cont-bottom').remove();
+        } catch (error) { }
     }
 
 
@@ -108,11 +124,18 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const gamePlayContainer = document.querySelector(".game-play");
     const startNewGame = document.querySelector(".btn-new-game");
+    //starts game
+    startNewGame.addEventListener("click", newGame);
 
-    startNewGame.addEventListener("click", newGame)
+    //resets the game
+    document.getElementById('sect--game__cont-sets').addEventListener('click', e => {
+        if (e.target.matches('#reset')) reset();
+        else if (e.target.matches('#new-game')) newGame();
+    });
 
 
 
+    //controls all the logic behind the game
     document.querySelector('.middle-grid-container').addEventListener('click', e => new GameMechanics().gameLogic(e, players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame));
 
 });
