@@ -12,35 +12,35 @@ export class GameMechanics {
 
 
 
-    disPlayResult(players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame) {
-        //filter the nodes which has not been resolved
-        let checker = [...document.querySelector('.middle-grid-container').children].filter($child => !$child.classList.contains('game__choosen-btn-choice-btn-done'));
+    disPlayResult(players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame, timer) {
+            //filter the nodes which has not been resolved
+            let checker = [...document.querySelector('.middle-grid-container').children].filter($child => !$child.classList.contains('game__choosen-btn-choice-btn-done'));
 
-        if (checker.length === 1) { //if the length is equal to 1 that means all nodes have been resolved
-            clearInterval(referenceInterval);
-            //the results will be taken and displayed on the pop up modal screen
+            if (checker.length === 1) { //if the length is equal to 1 that means all nodes have been resolved
+                clearInterval(referenceInterval);
+                //the results will be taken and displayed on the pop up modal screen
 
-            document.querySelector('.modal').classList.add('modal--show');
-            const $gameOverContainer = document.getElementById('modal-span').cloneNode(true).content;
-            const $modaLi = $gameOverContainer.querySelector('.modal__li');
-            const $modalLiElements = [...$modaLi.children];
-            const $modalTopElements = [...$gameOverContainer.querySelector('.modal__cont-top').children];
+                document.querySelector('.modal').classList.add('modal--show');
+                const $gameOverContainer = document.getElementById('modal-span').cloneNode(true).content;
+                const $modaLi = $gameOverContainer.querySelector('.modal__li');
+                const $modalLiElements = [...$modaLi.children];
+                const $modalTopElements = [...$gameOverContainer.querySelector('.modal__cont-top').children];
 
 
-            const setModal = (value1, value2) => {
-                const $newModalLi = $modaLi.cloneNode(true);
-                const $newModalLiElements = [...$newModalLi.children];
-                $newModalLiElements[0].textContent = value1;
-                $newModalLiElements[1].textContent = value2;
-                if (!value1.includes('(winner)')) $newModalLi.classList.remove('modal__li--winner');
-                $gameOverContainer.querySelector('.modal__ul').append($newModalLi);
-            };
+                const setModal = (value1, value2) => {
+                    const $newModalLi = $modaLi.cloneNode(true);
+                    const $newModalLiElements = [...$newModalLi.children];
+                    $newModalLiElements[0].textContent = value1;
+                    $newModalLiElements[1].textContent = value2;
+                    if (!value1.includes('(winner)')) $newModalLi.classList.remove('modal__li--winner');
+                    $gameOverContainer.querySelector('.modal__ul').append($newModalLi);
+                };
 
-            if (userMenuOption.players === 1) {
-                $modalTopElements[0].textContent = 'You did it';
-                $modalTopElements[1].textContent = 'Game over! Here are the results';
-                $modalLiElements[0].textContent = 'Time Elapsed';
-                $modalLiElements[1].textContent = `${minutes}:${seconds}`;
+                if (userMenuOption.players === 1) {
+                    $modalTopElements[0].textContent = 'You did it';
+                    $modalTopElements[1].textContent = 'Game over! Here are the results';
+                    $modalLiElements[0].textContent = 'Time Elapsed';
+                    $modalLiElements[1].textContent = `${`0${minutes}`.slice(-2)}:${`0${seconds}`.slice(-2)}`;
 
                 setModal('Moves Taken', players.player1.moves);
             } else {
@@ -95,11 +95,13 @@ export class GameMechanics {
 
 
 
-    gameLogic(e, players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame) {
+    gameLogic(e, players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame, timer) {
 
         if (!e.target.matches('.middle-grid-container')) { // targets round nodes when clicked
             const $potentialElement = document.querySelector('.game__choosen-btn-choice');
             //second node clicked will be compared to first...see else statement
+
+
             if ($potentialElement && e.target !== $potentialElement) {
                 e.target.classList.add('game__choosen-btn-choice');
                 players[`player${players.activePlayer}`].moves += 1;
@@ -135,7 +137,12 @@ export class GameMechanics {
 
 
 
-            } else e.target.classList.add('game__choosen-btn-choice'); //this class will be added to first node clicked
+            } else {
+
+                e.target.classList.add('game__choosen-btn-choice');
+
+            } //this class will be added to first node clicked
+
         }
 
 
