@@ -9,6 +9,8 @@ run  when the initial HTML document has been completely loaded*/
 
 window.addEventListener('DOMContentLoaded', () => {
             //This object will contain the game settings
+
+
             const userMenuOption = {
                 theme: null,
                 players: null,
@@ -25,6 +27,8 @@ window.addEventListener('DOMContentLoaded', () => {
             let seconds = 0;
 
             // This function sets the time for game, it only works when the player is set to one
+            let started = false;
+
             const timer = () => {
                     const $periodOfTime = document.getElementById('time-span');
                     referenceInterval = setInterval(() => {
@@ -39,6 +43,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
     const reset = (start = true) => {
         clearInterval(referenceInterval);
+        started = false;
         minutes = 0;
         seconds = 0;
         players.playerActive = 1;
@@ -110,7 +115,7 @@ window.addEventListener('DOMContentLoaded', () => {
         transform[1].append(gameMode)
 
         body.style.backgroundColor = "white";
-        if (userMenuOption.players === 1) timer();
+        // if (userMenuOption.players === 1) timer();
         element[2].closest('div').classList.add('sect--game__info--active');
 
     };
@@ -121,11 +126,26 @@ window.addEventListener('DOMContentLoaded', () => {
 
 
 
-
     const gamePlayContainer = document.querySelector(".game-play");
     const startNewGame = document.querySelector(".btn-new-game");
     //starts game
     startNewGame.addEventListener("click", newGame);
+
+
+
+
+    //controls all the logic behind the game
+    document.querySelector('.middle-grid-container').addEventListener('click', e => {
+        const gameMech = new GameMechanics()
+
+        if ((userMenuOption.players === 1) && (started === false)) {
+            started = true;
+            timer()
+        };
+        gameMech.gameLogic(e, players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame);
+
+
+    });
 
     //resets the game
     document.getElementById('sect--game__cont-sets').addEventListener('click', e => {
@@ -133,9 +153,5 @@ window.addEventListener('DOMContentLoaded', () => {
         else if (e.target.matches('#new-game')) newGame();
     });
 
-
-
-    //controls all the logic behind the game
-    document.querySelector('.middle-grid-container').addEventListener('click', e => new GameMechanics().gameLogic(e, players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame));
 
 });
