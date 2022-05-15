@@ -548,7 +548,7 @@ html body .show {
 @media only screen and (min-width:  480px) and (max-width: 768px) {
 
     .section {
-        width: 80vw;
+        width: 60vw;
         padding: 30px;
         margin: 0 auto 20px;
     } 
@@ -560,7 +560,7 @@ html body .show {
     }
 
     .text-select {
-        font-size: 13px;
+        font-size: 15px;
         margin-bottom: 15px;
         margin-top: 0px;
         height: 1vh;
@@ -585,7 +585,7 @@ html body .show {
 
     input[type="radio"]::before {
         content: " ";
-        font-size: 20px;
+        font-size: 18px;
     }
 
     .btn-start {
