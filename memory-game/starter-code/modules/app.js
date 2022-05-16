@@ -62,7 +62,9 @@ window.addEventListener('DOMContentLoaded', () => {
         if (start) startGame();
 
     }
-
+    function refreshPage() {
+        window.location.reload();
+    }
 
     const homePage = document.querySelector(".home");
     const btnStart = document.querySelector("#btn-start");
@@ -72,6 +74,7 @@ window.addEventListener('DOMContentLoaded', () => {
     const newGame = () => {
         //const element_selector = [''].map(selector => document.querySelector(selector))
         reset(false)
+
         gamePlayContainer.classList.add("hidden");
         homePage.classList.remove("hidden");
         body.style.backgroundColor = "#152938";
@@ -138,7 +141,7 @@ window.addEventListener('DOMContentLoaded', () => {
     document.querySelector('.middle-grid-container').addEventListener('click', e => {
         const gameMech = new GameMechanics()
 
-        if ((userMenuOption.players === 1) && (started === false)) {
+        if ((userMenuOption.players === 1) && (started === false)) {//only executes timer when player clicks a node
             started = true;
             timer()
         };
@@ -150,7 +153,11 @@ window.addEventListener('DOMContentLoaded', () => {
     //resets the game
     document.getElementById('sect--game__cont-sets').addEventListener('click', e => {
         if (e.target.matches('#reset')) reset();
-        else if (e.target.matches('#new-game')) newGame();
+        else if (e.target.matches('#new-game')) {
+            refreshPage();
+            newGame();
+        }
+
     });
 
 
