@@ -1,11 +1,12 @@
 export class GameTheme {
 
-    constructor(theme = null, userTemplate = null, num = null, gameResultInfo = null, players = null) {
+    constructor(theme = null, userTemplate = null, num = null, gameResultInfo = null, players = null, screen = null) {
         this.theme = theme;
         this.userTemplate = userTemplate;
         this.num = num;
         this.gameResultInfo = gameResultInfo;
         this.players = players;
+        this.screen = this.screen;
     }
 
 
@@ -45,10 +46,11 @@ export class GameTheme {
     }
 
 
-    setNumberOfPlayers(num, gameResultInfo, players) {
+    setNumberOfPlayers(num, gameResultInfo, players, screen) {
         this.num = num;
         this.gameResultInfo = gameResultInfo;
         this.players = players
+        this.screen = screen;
         const info = gameResultInfo.querySelector('.sect--game__info');
         this.players['player1'] = {
                 id: 1,
@@ -72,11 +74,24 @@ export class GameTheme {
         } else {
             for (let i = 2; i <= this.num; i++) {
 
+                const screen_manipulation = () => {
+                    if (window.matchMedia("(max-width: 600px)").matches) {
+                        info.querySelector('span:first-child').textContent = 'P1';
+                        newInfo.querySelector('span:first-child').textContent = `P${i}`;
+                    } else {
+
+                        info.querySelector('span:first-child').textContent = 'Player 1';
+                        newInfo.querySelector('span:first-child').textContent = `Player ${i}`;
+                    }
+
+                }
                 info.querySelector('span:first-child').textContent = 'Player 1';
                 info.querySelector('span:last-child').textContent = '0';
                 info.querySelector('span:last-child').id = 'player1-moves';
 
                 const newInfo = info.cloneNode(true);
+                window.addEventListener("click", screen_manipulation);
+                window.addEventListener("resize", screen_manipulation)
                 newInfo.querySelector('span:first-child').textContent = `Player ${i}`;
                 newInfo.querySelector('span:last-child').id = `player${i}-moves`;
                 this.gameResultInfo.append(newInfo);

@@ -8,7 +8,6 @@ run  when the initial HTML document has been completely loaded*/
 
 
 window.addEventListener('DOMContentLoaded', () => {
-            //This object will contain the game settings
 
 
             const userMenuOption = {
@@ -101,7 +100,7 @@ window.addEventListener('DOMContentLoaded', () => {
 
             } else if (i === 2) {
                 userMenuOption.players = +inputs.find(({ checked }) => checked).value;
-                game.setNumberOfPlayers(userMenuOption.players, gameMode, players)
+                game.setNumberOfPlayers(userMenuOption.players, gameMode, players, screen)
 
 
             } else {
