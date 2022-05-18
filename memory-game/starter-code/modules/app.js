@@ -151,14 +151,17 @@ window.addEventListener('DOMContentLoaded', () => {
     btnOpenModal.addEventListener("click", toggleModal);
 
     menu.addEventListener('click', function () {
-
+        if (started === true) setTimeout(timer)
         toggleModal();
 
     })
-    playNewGame.addEventListener('click', refreshPage)
+    playNewGame.addEventListener('click', function () {
+        refreshPage()
+        newGame()
+    })
 
     restart.addEventListener('click', function () {
-        setInterval(timer, 1000)
+
         toggleModal()
         reset();
 
@@ -172,7 +175,7 @@ window.addEventListener('DOMContentLoaded', () => {
             started = true;
             timer()
         };
-        gameMech.gameLogic(e, players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame);
+        gameMech.gameLogic(e, players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame, refreshPage);
 
 
     });

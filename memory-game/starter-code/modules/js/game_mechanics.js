@@ -12,7 +12,7 @@ export class GameMechanics {
 
 
 
-    disPlayResult(players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame, timer) {
+    disPlayResult(players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame, refreshPage) {
             //filter the nodes which has not been resolved
             let checker = [...document.querySelector('.middle-grid-container').children].filter($child => !$child.classList.contains('game__choosen-btn-choice-btn-done'));
 
@@ -77,7 +77,10 @@ export class GameMechanics {
             document.querySelector('.modal__content').append($gameOverContainer);
             document.querySelector('.modal__cont-bottom').addEventListener('click', e => {
                 if (e.target.matches('.modal__btn--reset')) reset();
-                else if (e.target.matches('.modal__btn--new-game')) newGame();
+                else if (e.target.matches('.modal__btn--new-game')) {
+                    refreshPage()
+                    newGame();
+                }
             });
 
 
@@ -95,7 +98,7 @@ export class GameMechanics {
 
 
 
-    gameLogic(e, players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame, timer) {
+    gameLogic(e, players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame, refreshPage) {
 
         if (!e.target.matches('.middle-grid-container')) { // targets round nodes when clicked
             const $potentialElement = document.querySelector('.game__choosen-btn-choice');
@@ -114,7 +117,7 @@ export class GameMechanics {
 
                         $potentialElement.classList.add('game__choosen-btn-choice-btn-done');
                         e.target.classList.add('game__choosen-btn-choice-btn-done');
-                        this.disPlayResult(players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame)
+                        this.disPlayResult(players, userMenuOption, referenceInterval, minutes, seconds, reset, newGame, refreshPage)
 
                     }, 700);
                     players[`player${players.activePlayer}`].pairs += 1
