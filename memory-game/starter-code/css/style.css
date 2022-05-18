@@ -278,7 +278,8 @@ input[type="radio"]:hover {
     gap: 15px;
 }
 
-.btn-restart {
+.btn-restart,
+.btn-menu {
     color: var(--color-white);
     border-radius: 20px;
     outline: none;
@@ -302,6 +303,22 @@ input[type="radio"]:hover {
     color: var(--color-dark);
     cursor: pointer;
     transition: all 0.25s ease;
+}
+
+@media screen and (max-width: 480px) {
+    .section {
+        width: 86vw
+    }
+    .btn-new-game,
+    .btn-restart {
+        display: none;
+    }
+    #menu {
+        display: block;
+    }
+    .top {
+        justify-content: space-around;
+    }
 }
 
 
@@ -350,8 +367,8 @@ input[type="radio"]:hover {
 }
 
 .middle-grid-container--6-columns .game-move__grid {
-    width: 70px;
-    height: 70px;
+    width: 50px;
+    height: 50px;
 }
 
 @media screen and (min-width: 768px) {
@@ -684,4 +701,68 @@ html body .show {
         color: var(--color-white);
         background-color: var(--color-blue);
     }
+}
+
+
+/* mobile modal screen*/
+
+.mobile-modal {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 80%;
+    max-width: 500px;
+    background-color: white;
+    padding: 4rem;
+    border-radius: 5px;
+    box-shadow: 0 3rem 5rem rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    text-align: center;
+}
+
+.menu-wrapper {
+    width: 100%;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.menu-option {
+    justify-content: space-evenly;
+    height: max-content;
+    align-self: center;
+    display: flex;
+    gap: 15px;
+    flex-direction: column;
+}
+
+.menu-option>button {
+    border-radius: 20px;
+    outline: none;
+    border: none;
+    font-weight: 900;
+    height: max-content;
+    padding: 13px 49px;
+    cursor: pointer;
+}
+
+.menu-option>*:first-child {
+    background-color: var(--color-gold);
+    color: var(--color-white);
+}
+
+.menu-option>*:nth-child(2),
+.menu-option>*:nth-child(3) {
+    background-color: var(--clrPattensBlue);
+    color: var(--color-dark);
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgb(0 0 0 / 76%);
+    z-index: 5;
 }

@@ -134,8 +134,35 @@ window.addEventListener('DOMContentLoaded', () => {
     //starts game
     startNewGame.addEventListener("click", newGame);
 
+    //Mobile pop up menu screen
+    const modal = document.querySelector(".mobile-modal"); //selects the modal for mobile
+    const btnOpenModal = document.querySelector(".btn-menu"); //selects the button to show the modal
+    const overlay = document.querySelector(".overlay"); //selects the overlay
+    const menu = document.getElementById('btn-resume');
+    const restart = document.getElementById('btn-menu-restart');
+    const playNewGame = document.getElementById('btn-menu-game');
 
 
+    const toggleModal = function () {
+        clearInterval(referenceInterval);//pauses timer
+        modal.classList.toggle("hidden");
+        overlay.classList.toggle("hidden");
+    };
+    btnOpenModal.addEventListener("click", toggleModal);
+
+    menu.addEventListener('click', function () {
+
+        toggleModal();
+
+    })
+    playNewGame.addEventListener('click', refreshPage)
+
+    restart.addEventListener('click', function () {
+        setInterval(timer, 1000)
+        toggleModal()
+        reset();
+
+    })
 
     //controls all the logic behind the game
     document.querySelector('.middle-grid-container').addEventListener('click', e => {
